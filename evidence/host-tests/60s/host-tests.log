@@ -1,0 +1,1 @@
+PASS: 31 lifecycle cases: baseline/corrected, reuse, ownership, failures, bounded settling, mode guards, wraparound, restoration fault lockout. Hardware mocked.

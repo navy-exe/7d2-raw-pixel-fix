@@ -1,0 +1,466 @@
+{
+  "file": "TP0002.TST",
+  "result": 0,
+  "original_selector": 14,
+  "restored_selector": 14,
+  "baseline_frames": 3,
+  "candidate_frames": 3,
+  "restore_ok": true,
+  "duration_us": 1182280,
+  "save_errors": 0,
+  "initial": {
+    "selector": 14,
+    "source_mux": 14,
+    "pack_mode": 32,
+    "hw_flags": 540020744,
+    "hw_rows": 0,
+    "hw_size": 69930384,
+    "hw_addr": 411838464,
+    "raw_addr": 411838464,
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bpp": 14,
+    "frame_size": 3708096,
+    "live": 1,
+    "movie": 1,
+    "zoom": 1,
+    "resolution": 0,
+    "crop": 0,
+    "recording": 0,
+    "job": 0,
+    "raw_enabled": 1,
+    "iso": 0,
+    "shutter": 50,
+    "aperture": 28,
+    "ticks": 0
+  },
+  "final": {
+    "selector": 14,
+    "source_mux": 14,
+    "pack_mode": 32,
+    "hw_flags": 540020744,
+    "hw_rows": 0,
+    "hw_size": 69930384,
+    "hw_addr": 411838464,
+    "raw_addr": 411838464,
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bpp": 14,
+    "frame_size": 3708096,
+    "live": 1,
+    "movie": 1,
+    "zoom": 1,
+    "resolution": 0,
+    "crop": 0,
+    "recording": 0,
+    "job": 0,
+    "raw_enabled": 1,
+    "iso": 0,
+    "shutter": 50,
+    "aperture": 28,
+    "ticks": 26
+  },
+  "complete": true,
+  "limitation": "Short standby frame snapshots; may straddle sensor updates. Dark-frame outliers alone do not verify Bayer phase, true bit precision, correction-map loading or continuous recording.",
+  "version": 2,
+  "native_lifecycle_completed": true,
+  "raw": {
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bits": 14,
+    "active_area": [
+      20,
+      2,
+      1066,
+      1982
+    ],
+    "cfa": "RGGB as reported; requires lit-frame validation"
+  },
+  "frames": [
+    {
+      "stage": "before",
+      "index": 0,
+      "file": "TP0002B0.RAW",
+      "sha256": "b76cea02d29823b847932c4026c40bb90bab5a3e29f494ce68214e9fa62125e6",
+      "median": 2085.0,
+      "minimum": 0,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2875,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 19891,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "before",
+      "index": 1,
+      "file": "TP0002B1.RAW",
+      "sha256": "8053a49681020e2f25dfa4514718be656230bfbacd8b5547df586c96f3b51591",
+      "median": 2085.0,
+      "minimum": 0,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2897,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 21769,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "before",
+      "index": 2,
+      "file": "TP0002B2.RAW",
+      "sha256": "49b9c9739e19f92eb518f7ebd24e10812acfe44cbe049d85a2e4dc44219abfaa",
+      "median": 2085.0,
+      "minimum": 0,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2898,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 19748,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 0,
+      "file": "TP0002A0.RAW",
+      "sha256": "c70dc380e756cb930ff5a9069a9cb1257d41c44b7a0cb87bf227447ae32f0c61",
+      "median": 2085.0,
+      "minimum": 2023,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2896,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 19770,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 1,
+      "file": "TP0002A1.RAW",
+      "sha256": "ad7ca9d6942c460642df8fb84e8c4a6d9c89b0874bcc72fcf52202d369df9828",
+      "median": 2085.0,
+      "minimum": 2022,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2888,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 21646,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 2,
+      "file": "TP0002A2.RAW",
+      "sha256": "d68ae6c464573e83e8063c2646510bc947d50f1d8dea9381325a48276b37b4b8",
+      "median": 2085.0,
+      "minimum": 2022,
+      "maximum": 13696,
+      "single_frame_bright_outliers": 2879,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 19654,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    }
+  ],
+  "signal_checks": {
+    "unique_before_payloads": 3,
+    "unique_after_payloads": 3,
+    "candidate_all_frames_flat": false,
+    "median_before": 2085.0,
+    "median_after": 2085.0,
+    "requires_lit_frame_bayer_phase_check": true,
+    "precision_confirmed_beyond_14_bit_packing": false
+  },
+  "threshold_adu": 256,
+  "persistent_bright_outliers_before": 2345,
+  "persistent_bright_outliers_after": 2660,
+  "baseline_sites_absent_after": 176,
+  "baseline_sites_remaining": 2169,
+  "new_candidate_sites": 491,
+  "removed_site_examples": [
+    {
+      "x": 623,
+      "y": 281
+    },
+    {
+      "x": 632,
+      "y": 283
+    },
+    {
+      "x": 637,
+      "y": 283
+    },
+    {
+      "x": 561,
+      "y": 284
+    },
+    {
+      "x": 556,
+      "y": 291
+    },
+    {
+      "x": 559,
+      "y": 292
+    },
+    {
+      "x": 711,
+      "y": 292
+    },
+    {
+      "x": 719,
+      "y": 294
+    },
+    {
+      "x": 729,
+      "y": 295
+    },
+    {
+      "x": 747,
+      "y": 297
+    },
+    {
+      "x": 763,
+      "y": 299
+    },
+    {
+      "x": 967,
+      "y": 322
+    },
+    {
+      "x": 559,
+      "y": 323
+    },
+    {
+      "x": 964,
+      "y": 323
+    },
+    {
+      "x": 573,
+      "y": 325
+    },
+    {
+      "x": 566,
+      "y": 326
+    },
+    {
+      "x": 552,
+      "y": 327
+    },
+    {
+      "x": 557,
+      "y": 328
+    },
+    {
+      "x": 589,
+      "y": 329
+    },
+    {
+      "x": 591,
+      "y": 330
+    },
+    {
+      "x": 587,
+      "y": 331
+    },
+    {
+      "x": 586,
+      "y": 332
+    },
+    {
+      "x": 477,
+      "y": 333
+    },
+    {
+      "x": 575,
+      "y": 334
+    },
+    {
+      "x": 550,
+      "y": 337
+    },
+    {
+      "x": 583,
+      "y": 338
+    },
+    {
+      "x": 464,
+      "y": 341
+    },
+    {
+      "x": 592,
+      "y": 342
+    },
+    {
+      "x": 594,
+      "y": 343
+    },
+    {
+      "x": 581,
+      "y": 346
+    },
+    {
+      "x": 577,
+      "y": 347
+    },
+    {
+      "x": 548,
+      "y": 349
+    }
+  ],
+  "interpretation": "Compare a lens-cap test first. Bright scene detail can also be counted as outliers; fewer outliers alone is not proof of an acceptable RAW image.",
+  "persistent_cold_outliers_before": 689,
+  "persistent_cold_outliers_after": 0,
+  "persistent_zero_pixels_before": 689,
+  "persistent_zero_pixels_after": 0,
+  "baseline_zero_sites_still_zero_after": 0,
+  "after_values_at_baseline_zero_sites": {
+    "minimum": 2032,
+    "maximum": 7209,
+    "median": 2092.0
+  },
+  "baseline_zero_site_examples": [
+    {
+      "x": 1074,
+      "y": 25
+    },
+    {
+      "x": 1772,
+      "y": 28
+    },
+    {
+      "x": 1950,
+      "y": 28
+    },
+    {
+      "x": 409,
+      "y": 30
+    },
+    {
+      "x": 887,
+      "y": 30
+    },
+    {
+      "x": 1021,
+      "y": 36
+    },
+    {
+      "x": 870,
+      "y": 38
+    },
+    {
+      "x": 356,
+      "y": 40
+    },
+    {
+      "x": 666,
+      "y": 40
+    },
+    {
+      "x": 1362,
+      "y": 40
+    },
+    {
+      "x": 1470,
+      "y": 41
+    },
+    {
+      "x": 1564,
+      "y": 42
+    },
+    {
+      "x": 1794,
+      "y": 43
+    },
+    {
+      "x": 1102,
+      "y": 45
+    },
+    {
+      "x": 749,
+      "y": 47
+    },
+    {
+      "x": 1670,
+      "y": 47
+    },
+    {
+      "x": 1728,
+      "y": 48
+    },
+    {
+      "x": 1037,
+      "y": 49
+    },
+    {
+      "x": 1317,
+      "y": 50
+    },
+    {
+      "x": 163,
+      "y": 54
+    },
+    {
+      "x": 1547,
+      "y": 59
+    },
+    {
+      "x": 441,
+      "y": 60
+    },
+    {
+      "x": 1658,
+      "y": 60
+    },
+    {
+      "x": 1840,
+      "y": 61
+    },
+    {
+      "x": 1756,
+      "y": 62
+    },
+    {
+      "x": 1859,
+      "y": 62
+    },
+    {
+      "x": 1416,
+      "y": 65
+    },
+    {
+      "x": 617,
+      "y": 68
+    },
+    {
+      "x": 9,
+      "y": 70
+    },
+    {
+      "x": 34,
+      "y": 70
+    },
+    {
+      "x": 1841,
+      "y": 70
+    },
+    {
+      "x": 328,
+      "y": 71
+    }
+  ]
+}

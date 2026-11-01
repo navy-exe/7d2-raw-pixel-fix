@@ -1,0 +1,234 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "scope": "Actual compiled recorder functions; external APIs mocked",
+  "cases": [
+    {
+      "case": "runtime_ok",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "runtime_idle",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "runtime_mux",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "runtime_pack",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "runtime_geometry",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "wait_ok",
+      "passed": true,
+      "simulated_sleep_ms": 30,
+      "stages": []
+    },
+    {
+      "case": "wait_mux_delayed",
+      "passed": true,
+      "simulated_sleep_ms": 40,
+      "stages": []
+    },
+    {
+      "case": "wait_no_vsync",
+      "passed": true,
+      "simulated_sleep_ms": 1000,
+      "stages": []
+    },
+    {
+      "case": "wait_pack",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "atomic_restore",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "native_select",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "deinit_idle",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "deinit_recording",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "deinit_armed",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "frame_limit",
+      "passed": true,
+      "simulated_sleep_ms": 0,
+      "stages": []
+    },
+    {
+      "case": "task_file_failure",
+      "passed": true,
+      "simulated_sleep_ms": 50,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "RECORD_BEFORE_FILE_CREATE",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_log_failure",
+      "passed": true,
+      "simulated_sleep_ms": 50,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_settle_timeout",
+      "passed": true,
+      "simulated_sleep_ms": 1020,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_START_FAILED_-33",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_header_failure",
+      "passed": true,
+      "simulated_sleep_ms": 50,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "RECORD_BEFORE_FILE_CREATE",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_stop",
+      "passed": true,
+      "simulated_sleep_ms": 60,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "RECORD_BEFORE_FILE_CREATE",
+        "RECORD_AFTER_HEADERS",
+        "RECORD_BEFORE_VSYNC_ENABLE",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_restore_timeout",
+      "passed": true,
+      "simulated_sleep_ms": 1040,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "RECORD_BEFORE_FILE_CREATE",
+        "RECORD_AFTER_HEADERS",
+        "RECORD_BEFORE_VSYNC_ENABLE",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_FAILED_RESTART",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    },
+    {
+      "case": "task_vsync_log_failure",
+      "passed": true,
+      "simulated_sleep_ms": 50,
+      "stages": [
+        "RECORD_ENTER",
+        "RECORD_BEFORE_RAW_UPDATE",
+        "RECORD_AFTER_RAW_UPDATE",
+        "RECORD_AFTER_BUFFERS",
+        "TAP_BEFORE_SELECT",
+        "TAP_SETTLED",
+        "RECORD_BEFORE_FILE_CREATE",
+        "RECORD_AFTER_HEADERS",
+        "RECORD_BEFORE_VSYNC_ENABLE",
+        "TAP_BEFORE_RESTORE",
+        "TAP_SELECTOR_RESTORED",
+        "RECORD_COPY_FRAMES_0_MAX_US_0_LAST_RC_0_MANUAL_0",
+        "TAP_RESTORE_VERIFIED",
+        "RECORD_CLEANUP_COMPLETE"
+      ]
+    }
+  ]
+}

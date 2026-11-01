@@ -1,0 +1,28 @@
+{
+  "sites": [
+    {
+      "x": 1314,
+      "y": 468,
+      "before": 0,
+      "after": 7137
+    },
+    {
+      "x": 617,
+      "y": 68,
+      "before": 0,
+      "after": 4688
+    }
+  ],
+  "source": [
+    "TP0002B0.RAW",
+    "TP0002A0.RAW"
+  ],
+  "display_range_adu": [
+    2047,
+    8000
+  ],
+  "display_gamma": 0.45454545454545453,
+  "sampling": "17x17 same-CFA-colour samples, stride 2; nearest-neighbour 20x",
+  "site_selection": "two brightest corrected sites separated by at least 100 native pixels, away from frame edges",
+  "pixel_repair": false
+}

@@ -1,0 +1,66 @@
+{
+  "native_pair": "full-frames-native-side-by-side.png",
+  "marked_overview": "full-frames-marked-side-by-side.png",
+  "sources": [
+    "TP0002B0-preview.png",
+    "TP0002A0-preview.png"
+  ],
+  "selected_sites_xy": [
+    [
+      1314,
+      468
+    ],
+    [
+      617,
+      68
+    ],
+    [
+      548,
+      347
+    ],
+    [
+      1160,
+      378
+    ],
+    [
+      1700,
+      323
+    ],
+    [
+      1271,
+      686
+    ],
+    [
+      999,
+      80
+    ],
+    [
+      1631,
+      421
+    ],
+    [
+      887,
+      30
+    ],
+    [
+      901,
+      328
+    ],
+    [
+      667,
+      322
+    ],
+    [
+      409,
+      30
+    ]
+  ],
+  "selection": "bright corrected values, spaced by at least 110 pixels; subset of 689 confirmed zero sites",
+  "annotations": "red rings around same coordinates on both images, not added white dots",
+  "native_photo_size": [
+    1984,
+    1068
+  ],
+  "native_pair_resized": false,
+  "pc_pixel_repair": false
+}

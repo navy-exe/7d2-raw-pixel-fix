@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "increasing_uptime_between_completed_trials": true,
+  "entry_ms": [
+    79819,
+    93335,
+    155614
+  ],
+  "cleanup_ms": [
+    85902,
+    153014,
+    164322
+  ],
+  "gaps_after_cleanup_ms": [
+    7433,
+    2600
+  ],
+  "all_three_manual_stops": true,
+  "scope": "Uptime progression and user sequence support same boot; a reset with precisely matching uptime cannot be categorically excluded by logs alone."
+}

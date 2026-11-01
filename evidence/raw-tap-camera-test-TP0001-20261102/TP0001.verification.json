@@ -1,0 +1,337 @@
+{
+  "file": "TP0001.TST",
+  "result": 0,
+  "original_selector": 14,
+  "restored_selector": 14,
+  "baseline_frames": 3,
+  "candidate_frames": 3,
+  "restore_ok": true,
+  "duration_us": 1164859,
+  "save_errors": 0,
+  "initial": {
+    "selector": 14,
+    "source_mux": 14,
+    "pack_mode": 32,
+    "hw_flags": 540020744,
+    "hw_rows": 0,
+    "hw_size": 69930384,
+    "hw_addr": 411838464,
+    "raw_addr": 411838464,
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bpp": 14,
+    "frame_size": 3708096,
+    "live": 1,
+    "movie": 1,
+    "zoom": 1,
+    "resolution": 0,
+    "crop": 0,
+    "recording": 0,
+    "job": 0,
+    "raw_enabled": 1,
+    "iso": 0,
+    "shutter": 50,
+    "aperture": 28,
+    "ticks": 0
+  },
+  "final": {
+    "selector": 14,
+    "source_mux": 14,
+    "pack_mode": 32,
+    "hw_flags": 540020744,
+    "hw_rows": 0,
+    "hw_size": 69930384,
+    "hw_addr": 411838464,
+    "raw_addr": 411838464,
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bpp": 14,
+    "frame_size": 3708096,
+    "live": 1,
+    "movie": 1,
+    "zoom": 1,
+    "resolution": 0,
+    "crop": 0,
+    "recording": 0,
+    "job": 0,
+    "raw_enabled": 1,
+    "iso": 0,
+    "shutter": 50,
+    "aperture": 28,
+    "ticks": 26
+  },
+  "complete": true,
+  "limitation": "Short standby frame snapshots; may straddle sensor updates. Dark-frame outliers alone do not verify Bayer phase, true bit precision, correction-map loading or continuous recording.",
+  "version": 2,
+  "native_lifecycle_completed": true,
+  "raw": {
+    "width": 1984,
+    "height": 1068,
+    "pitch": 3472,
+    "bits": 14,
+    "active_area": [
+      20,
+      2,
+      1066,
+      1982
+    ],
+    "cfa": "RGGB as reported; requires lit-frame validation"
+  },
+  "frames": [
+    {
+      "stage": "before",
+      "index": 0,
+      "file": "TP0001B0.RAW",
+      "sha256": "787b1f0163bcb36bdc75e156b2e9c8cbb33da6c0725f062afbee0a5f32f5d1f1",
+      "median": 2048.0,
+      "minimum": 0,
+      "maximum": 2075,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 20550,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "before",
+      "index": 1,
+      "file": "TP0001B1.RAW",
+      "sha256": "868895bf3d2c75ca15bce230715a3fb1fa049a15b401433dbddd0f08919aaaca",
+      "median": 2048.0,
+      "minimum": 0,
+      "maximum": 2076,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 23098,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "before",
+      "index": 2,
+      "file": "TP0001B2.RAW",
+      "sha256": "f63d8178713d9c582f91152c5e45da2cbc2e121ab6ef9b686ab91a3a536b3c42",
+      "median": 2048.0,
+      "minimum": 0,
+      "maximum": 2075,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 689,
+      "zero_pixels": 689,
+      "copy_us": 21280,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 0,
+      "file": "TP0001A0.RAW",
+      "sha256": "75b0d1ea27b7049668b76cbc0e3074508ae49ac7af7436d092177102616485dc",
+      "median": 2048.0,
+      "minimum": 2020,
+      "maximum": 2074,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 20351,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 1,
+      "file": "TP0001A1.RAW",
+      "sha256": "70f3c0bf1c5b7738958afa8c4a755c2f7a9d02a8956a557b2b6e28252e8ed572",
+      "median": 2048.0,
+      "minimum": 2019,
+      "maximum": 2074,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 22237,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    },
+    {
+      "stage": "after",
+      "index": 2,
+      "file": "TP0001A2.RAW",
+      "sha256": "997ca1e049aab404e10a1f9d95a9bf4d342c6f8247f217846fc8de1e7b8aa366",
+      "median": 2048.0,
+      "minimum": 2019,
+      "maximum": 2077,
+      "single_frame_bright_outliers": 0,
+      "single_frame_cold_outliers": 0,
+      "zero_pixels": 0,
+      "copy_us": 20445,
+      "vsyncs_during_copy": 0,
+      "black_level": 2047,
+      "white_level": 16200
+    }
+  ],
+  "signal_checks": {
+    "unique_before_payloads": 3,
+    "unique_after_payloads": 3,
+    "candidate_all_frames_flat": false,
+    "median_before": 2048.0,
+    "median_after": 2048.0,
+    "requires_lit_frame_bayer_phase_check": true,
+    "precision_confirmed_beyond_14_bit_packing": false
+  },
+  "threshold_adu": 256,
+  "persistent_bright_outliers_before": 0,
+  "persistent_bright_outliers_after": 0,
+  "baseline_sites_absent_after": 0,
+  "baseline_sites_remaining": 0,
+  "new_candidate_sites": 0,
+  "removed_site_examples": [],
+  "interpretation": "Compare a lens-cap test first. Bright scene detail can also be counted as outliers; fewer outliers alone is not proof of an acceptable RAW image.",
+  "persistent_cold_outliers_before": 689,
+  "persistent_cold_outliers_after": 0,
+  "persistent_zero_pixels_before": 689,
+  "persistent_zero_pixels_after": 0,
+  "baseline_zero_sites_still_zero_after": 0,
+  "after_values_at_baseline_zero_sites": {
+    "minimum": 2028,
+    "maximum": 2067,
+    "median": 2048.0
+  },
+  "baseline_zero_site_examples": [
+    {
+      "x": 1074,
+      "y": 25
+    },
+    {
+      "x": 1772,
+      "y": 28
+    },
+    {
+      "x": 1950,
+      "y": 28
+    },
+    {
+      "x": 409,
+      "y": 30
+    },
+    {
+      "x": 887,
+      "y": 30
+    },
+    {
+      "x": 1021,
+      "y": 36
+    },
+    {
+      "x": 870,
+      "y": 38
+    },
+    {
+      "x": 356,
+      "y": 40
+    },
+    {
+      "x": 666,
+      "y": 40
+    },
+    {
+      "x": 1362,
+      "y": 40
+    },
+    {
+      "x": 1470,
+      "y": 41
+    },
+    {
+      "x": 1564,
+      "y": 42
+    },
+    {
+      "x": 1794,
+      "y": 43
+    },
+    {
+      "x": 1102,
+      "y": 45
+    },
+    {
+      "x": 749,
+      "y": 47
+    },
+    {
+      "x": 1670,
+      "y": 47
+    },
+    {
+      "x": 1728,
+      "y": 48
+    },
+    {
+      "x": 1037,
+      "y": 49
+    },
+    {
+      "x": 1317,
+      "y": 50
+    },
+    {
+      "x": 163,
+      "y": 54
+    },
+    {
+      "x": 1547,
+      "y": 59
+    },
+    {
+      "x": 441,
+      "y": 60
+    },
+    {
+      "x": 1658,
+      "y": 60
+    },
+    {
+      "x": 1840,
+      "y": 61
+    },
+    {
+      "x": 1756,
+      "y": 62
+    },
+    {
+      "x": 1859,
+      "y": 62
+    },
+    {
+      "x": 1416,
+      "y": 65
+    },
+    {
+      "x": 617,
+      "y": 68
+    },
+    {
+      "x": 9,
+      "y": 70
+    },
+    {
+      "x": 34,
+      "y": 70
+    },
+    {
+      "x": 1841,
+      "y": 70
+    },
+    {
+      "x": 328,
+      "y": 71
+    }
+  ]
+}

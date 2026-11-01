@@ -1,0 +1,63 @@
+{
+  "label": "clip2",
+  "entry_ms": 93335,
+  "cleanup_ms": 153014,
+  "exposure_metadata": [
+    {
+      "iso_mode": 1,
+      "iso": 5000,
+      "analog_iso": 0,
+      "digital_gain": 0,
+      "shutter_microseconds": 20749,
+      "timestamp_us": 714
+    }
+  ],
+  "result": "PASS",
+  "mode": "manual",
+  "clip": "M02-0210.MLV",
+  "log": "RD0025.LOG",
+  "frames": 1394,
+  "duration_seconds": 58.141474808141474,
+  "measured_fps": 23.976039382391683,
+  "frame_intervals_us": {
+    "min": 41586,
+    "median": 41709.0,
+    "max": 41846
+  },
+  "max_copy_us": 24559,
+  "known_native_defects_inside_recorded_area": 509,
+  "total_known_site_samples": 709546,
+  "known_site_values": {
+    "minimum": 1905,
+    "maximum": 12368,
+    "median": 2370.0,
+    "zero_samples": 0
+  },
+  "median_absolute_same_color_neighbor_difference_adu": 16.5,
+  "checks": {
+    "backup_verified": true,
+    "log_backup_verified": true,
+    "complete_file_structure": true,
+    "no_block_errors": true,
+    "header_count_matches": true,
+    "physical_frames_sequential": true,
+    "all_payloads_distinct": true,
+    "all_frames_nonflat": true,
+    "log_count_matches": true,
+    "format_matches": true,
+    "correct_header_fps": true,
+    "header_agrees_with_frame_timing": true,
+    "timing_continuous": true,
+    "zero_pixels_absent_in_every_frame": true,
+    "selection_verified": true,
+    "restoration_verified": true,
+    "cleanup_complete": true,
+    "successful_copy": true,
+    "copy_within_frame_interval": true,
+    "expected_stop": true,
+    "expected_frame_limit": true,
+    "iso5000_in_all_saved_exposure_metadata": true,
+    "all_known_sites_nonzero_every_frame": true
+  },
+  "scope": "Three actual camera recordings at reportedISO5000, ordered same-boot manual start/stop sequence. No matched high-ISO pre-fix baseline; no claim of general noise reduction. Fixed zero/invalid defect map verified; not all possible hot pixels, noise, long-run stability or independent sensor precision."
+}

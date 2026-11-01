@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "cases": [
+    "full valid fixture: exact 2 -> 1 persistent sites",
+    "cold and zero sites: exact 2 -> 1; replacement values verified",
+    "successful lifecycle with missing payloads reported incomplete",
+    "truncated RAW rejected",
+    "changed bit-depth metadata rejected",
+    "unconfirmed restoration reported incomplete"
+  ],
+  "hardware_tested": false
+}

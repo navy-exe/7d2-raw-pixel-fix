@@ -1,0 +1,8 @@
+{
+  "source": "M02-0209.MLV",
+  "backup": "M02-0209.MLV",
+  "bytes": 297555456,
+  "sha256": "3b59a85b8a1485b0da2628a965132e3e2447e097e57930507febac62e1f26024",
+  "verified": true,
+  "method": "Source hash computed during the copy; backup independently re-read and hashed."
+}

@@ -1,0 +1,17 @@
+{
+  "before": "TP0001B0.RAW",
+  "after": "TP0001A0.RAW",
+  "sample_xy": [
+    972,
+    556
+  ],
+  "before_value": 0,
+  "after_value": 2048,
+  "display_range_adu": [
+    2016,
+    2080
+  ],
+  "display_patch_pixels": 41,
+  "nearest_neighbor_scale": 12,
+  "computer_pixel_repair": false
+}

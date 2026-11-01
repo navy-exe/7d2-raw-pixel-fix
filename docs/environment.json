@@ -1,0 +1,32 @@
+{
+  "camera": "Canon EOS 7D Mark II",
+  "canon_firmware": "1.1.2",
+  "upstream_repository": "https://github.com/reticulatedpines/magiclantern_simplified",
+  "upstream_commit": "142472e95054d73640f50789ac0fd66325499d82",
+  "current_source_trial": "Corrected 60s; default OFF until explicitly enabled",
+  "current_trial_module_sha256": "CC7F99517DD7107418C57EDC9EE1460F60AE5B502AA59FD98DACCEB60BBE7E4A",
+  "previous_10s_module_sha256": "8D17CF57DE5292FB14AA7F8761B769BA380ED815A56ADE09D544B6C18583B098",
+  "existing_core_sha256": "8BB2397D08A35281DB0FE78A84A897BBC84E09E9787C568C9ED77A0E0B6BA1BE",
+  "existing_symbol_table_sha256": "178616BE6F9991C6B748C12A55845D468409F09ADCC965853B328CA15A11F58B",
+  "compiler": "xPack arm-none-eabi GCC13.3.1-1.1",
+  "format": {
+    "native": [
+      1984,
+      1068
+    ],
+    "native_pitch": 3472,
+    "recorded": [
+      1832,
+      800
+    ],
+    "recorded_origin": [
+      144,
+      144
+    ],
+    "bits_packed": 14,
+    "fps": 23.976,
+    "frame_cap": 1439
+  },
+  "original_pixel_payloads_included": false,
+  "reference_binaries_included": false
+}

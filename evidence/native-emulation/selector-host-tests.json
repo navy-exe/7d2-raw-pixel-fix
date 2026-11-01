@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "command": "lv_set_raw_wp",
+  "handler_icu": "0xc1de",
+  "native_setter": "0xfe2b196a",
+  "state_address_icu": "0x2d7d0",
+  "cases": [
+    {
+      "command_argument": 0,
+      "internal_pack32_selector": 14,
+      "native_name": "RSHD"
+    },
+    {
+      "command_argument": 1,
+      "internal_pack32_selector": 4,
+      "native_name": "SHADING"
+    },
+    {
+      "command_argument": 2,
+      "internal_pack32_selector": 8,
+      "native_name": "HIVSHD"
+    },
+    {
+      "command_argument": 3,
+      "internal_pack32_selector": 11,
+      "native_name": "ORBIT"
+    },
+    {
+      "command_argument": 4,
+      "internal_pack32_selector": 18,
+      "native_name": "DEFOE"
+    },
+    {
+      "command_argument": 5,
+      "internal_pack32_selector": 16,
+      "native_name": "HEAD"
+    },
+    {
+      "command_argument": 6,
+      "internal_pack32_selector": 7,
+      "native_name": "DEFMARK"
+    },
+    {
+      "command_argument": 7,
+      "internal_pack32_selector": 43,
+      "native_name": "DEFMARKII2"
+    },
+    {
+      "command_argument": 8,
+      "internal_pack32_selector": 28,
+      "native_name": "DEGEEN1"
+    },
+    {
+      "command_argument": 9,
+      "internal_pack32_selector": 29,
+      "native_name": "DEGEEN2"
+    },
+    {
+      "command_argument": 10,
+      "internal_pack32_selector": 23,
+      "native_name": "KIDS"
+    },
+    {
+      "command_argument": 11,
+      "internal_pack32_selector": 24,
+      "native_name": "CHOFF"
+    },
+    {
+      "command_argument": 12,
+      "internal_pack32_selector": 30,
+      "native_name": "YOSSIE"
+    },
+    {
+      "command_argument": 13,
+      "internal_pack32_selector": 35,
+      "native_name": "SAFARI_IN"
+    },
+    {
+      "command_argument": 14,
+      "internal_pack32_selector": 34,
+      "native_name": "PRE_FIFO"
+    },
+    {
+      "command_argument": 28,
+      "internal_pack32_selector": 34,
+      "native_name": "PRE_FIFO"
+    }
+  ],
+  "limitation": "Verifies command translation and immediate state writes only. No proof of route activation, corrected pixels, geometry, Bayer format or safe recording. No card modifications."
+}

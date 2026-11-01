@@ -1,0 +1,49 @@
+{
+  "result": "PASS",
+  "mode": "automatic",
+  "clip": "M02-0119.MLV",
+  "log": "RD0022.LOG",
+  "frames": 240,
+  "duration_seconds": 10.01001001001001,
+  "measured_fps": 23.976112168077563,
+  "frame_intervals_us": {
+    "min": 41591,
+    "median": 41708.0,
+    "max": 41848
+  },
+  "max_copy_us": 24565,
+  "known_native_defects_inside_recorded_area": 509,
+  "total_known_site_samples": 122160,
+  "known_site_values": {
+    "minimum": 2030,
+    "maximum": 13696,
+    "median": 2148.0,
+    "zero_samples": 0
+  },
+  "median_absolute_same_color_neighbor_difference_adu": 5.0,
+  "checks": {
+    "backup_verified": true,
+    "log_backup_verified": true,
+    "complete_file_structure": true,
+    "no_block_errors": true,
+    "header_count_matches": true,
+    "physical_frames_sequential": true,
+    "all_payloads_distinct": true,
+    "all_frames_nonflat": true,
+    "log_count_matches": true,
+    "format_matches": true,
+    "correct_header_fps": true,
+    "header_agrees_with_frame_timing": true,
+    "timing_continuous": true,
+    "zero_pixels_absent_in_every_frame": true,
+    "selection_verified": true,
+    "restoration_verified": true,
+    "cleanup_complete": true,
+    "successful_copy": true,
+    "copy_within_frame_interval": true,
+    "expected_stop": true,
+    "expected_frame_limit": true,
+    "all_known_sites_nonzero_every_frame": true
+  },
+  "scope": "Two short actual camera recordings only. Fixed zero/invalid defect map verified; not all possible hot pixels, noise, long-run stability or independent sensor precision."
+}

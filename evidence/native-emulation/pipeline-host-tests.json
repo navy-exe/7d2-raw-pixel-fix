@@ -1,0 +1,385 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "cases": [
+    {
+      "tap": 14,
+      "packing_mode": "0x20",
+      "bits": 14,
+      "pitch": 3472,
+      "height": 1068,
+      "dma_channel": 2,
+      "hardware_requests": [
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd00370d4",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0xe"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037074",
+          "args": [
+            "0xf0ffffff",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x80000000",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008094",
+          "args": [
+            "0x20",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008264",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008bf0",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008268",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008098",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0xe"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x1",
+            "0xe"
+          ]
+        }
+      ],
+      "geometry": {
+        "channel": 2,
+        "words": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3472,
+          0,
+          1067,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "tap": 18,
+      "packing_mode": "0x20",
+      "bits": 14,
+      "pitch": 3472,
+      "height": 1068,
+      "dma_channel": 2,
+      "hardware_requests": [
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd00370d4",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0x12"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037074",
+          "args": [
+            "0xf0ffffff",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x80000000",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008094",
+          "args": [
+            "0x20",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008264",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008bf0",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008268",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008098",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0x12"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x1",
+            "0x12"
+          ]
+        }
+      ],
+      "geometry": {
+        "channel": 2,
+        "words": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3472,
+          0,
+          1067,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "tap": 34,
+      "packing_mode": "0x20",
+      "bits": 14,
+      "pitch": 3472,
+      "height": 1068,
+      "dma_channel": 2,
+      "hardware_requests": [
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd00370d4",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0x22"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "masked",
+          "address": "0xd0037074",
+          "args": [
+            "0xf0ffffff",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x80000000",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008094",
+          "args": [
+            "0x20",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008264",
+          "args": [
+            "0x1",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008bf0",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008268",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "setup",
+          "kind": "write",
+          "address": "0xd0008098",
+          "args": [
+            "0x0",
+            "0x0"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "masked",
+          "address": "0xd0037014",
+          "args": [
+            "0xffffffc0",
+            "0x22"
+          ]
+        },
+        {
+          "phase": "frame",
+          "kind": "write",
+          "address": "0xd0008090",
+          "args": [
+            "0x1",
+            "0x22"
+          ]
+        }
+      ],
+      "geometry": {
+        "channel": 2,
+        "words": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3472,
+          0,
+          1067,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "limitation": "Native setup arithmetic and requested writes only; mocked peripherals. Does not prove defect correction, Bayer data or real DMA bounds on camera."
+}

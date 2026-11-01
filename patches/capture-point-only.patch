@@ -1,0 +1,351 @@
+--- a/modules/raw_video/mlv_lite/mlv_lite.c
++++ b/modules/raw_video/mlv_lite/mlv_lite.c
+@@ -77,6 +77,7 @@
+ #include "../../silent/lossless.h"
+ #include "active_7d2.h"
+ #include "fast_probe_7d2.h"
++#include "capture_tap_7d2.h"
+ #include "timer.h"
+ #include "ml-cbr.h"
+ 
+@@ -172,6 +173,12 @@
+ /* Local diagnostic, LLM-assisted. OFF retains upstream full-width recording. */
+ static CONFIG_INT("raw.7d2.startup_test", startup_test_7d2, 0);
+ static CONFIG_INT("raw.7d2.height800", height800_7d2, 0);
++/* Short opt-in capture-point comparison; OFF keeps the working recorder path. */
++static CONFIG_INT("raw.7d2.capture_test", capture_test_7d2, 0);
++static struct capture_tap_state_7d2 capture_tap_7d2;
++static volatile uint32_t capture_tap_ticks_7d2, capture_tap_limit_7d2;
++static volatile int capture_tap_stop_7d2;
++static int capture_tap_runtime_ok_7d2(void);
+ static int fast_copy_segments_7d2(const struct fast_7d2_segment *, unsigned int);
+ static volatile uint32_t test_copy_frames_7d2, test_copy_max_us_7d2;
+ static volatile int test_copy_rc_7d2;
+@@ -2869,10 +2876,12 @@
+                 edmac_active = 1;
+                 uint32_t start = (uint32_t)get_us_clock();
+                 int rc = -1000;
+-                if (startup_test_7d2 == 6 && use_7d2_active_area() && skip_x == ACTIVE_7D2_LEFT)
++                if (startup_test_7d2 == 6 && use_7d2_active_area() && skip_x == ACTIVE_7D2_LEFT &&
++                    capture_tap_runtime_ok_7d2())
+                     rc = fast_7d2_frame(UNCACHEABLE(out_ptr), frame_size_uncompressed,
+                         UNCACHEABLE(fullSizeBuffer), raw_info.frame_size,
+                         raw_info.height, skip_y, res_y, fast_copy_segments_7d2);
++                if (rc == 0 && !capture_tap_runtime_ok_7d2()) rc = -1038;
+                 uint32_t elapsed = (uint32_t)get_us_clock() - start;
+                 test_copy_rc_7d2 = rc;
+                 if (rc == 0) test_copy_frames_7d2++;
+@@ -2913,6 +2922,12 @@
+ static REQUIRES(LiveViewTask) FAST
+ void process_frame(int next_fullsize_buffer_pos)
+ {
++    if (capture_tap_limit_7d2 && frame_count > (int)capture_tap_limit_7d2)
++    {
++        capture_tap_stop_7d2 = 1; /* expected short-test stop, not buffer full */
++        raw_recording_state = RAW_FINISHING;
++        return;
++    }
+     /* skip the first frame(s) */
+     if (frame_count <= 0)
+     {
+@@ -3012,6 +3027,8 @@
+ static REQUIRES(LiveViewTask)
+ unsigned int FAST raw_rec_vsync_cbr(unsigned int unused)
+ {
++    if (cam_7d2 && (capture_test_7d2 || capture_tap_7d2.active || capture_tap_7d2.armed))
++        capture_tap_ticks_7d2++;
+     if (!raw_video_enabled) return 0;
+     if (!compress_mq) return 0;
+     if (!is_movie_mode()) return 0;
+@@ -3413,16 +3430,59 @@
+  * after reboot without leaving a file handle open across the next operation.
+  * No file I/O is added to vsync or the compression task. */
+ static char startup_log_7d2[64];
++static void capture_tap_sample_7d2(struct capture_tap_sample_7d2 *s)
++{
++    memset(s,0,sizeof(*s));
++    s->selector=*(volatile uint32_t*)0x2d7d0;s->ticks=capture_tap_ticks_7d2;
++    s->live=lv;s->movie=is_movie_mode();s->zoom=lv_dispsize;
++    s->resolution=video_mode_resolution;s->crop=video_mode_crop;
++    s->raw=raw_lv_is_enabled();s->h264=RECORDING_H264;s->job=lens_info.job_state;
++    s->width=raw_info.width;s->height=raw_info.height;s->pitch=raw_info.pitch;
++    s->bytes=raw_info.frame_size;s->bits=raw_info.bits_per_pixel;s->cfa=raw_info.cfa_pattern;
++    if(!s->live || !s->movie)return;
++    s->mux=shamem_read(0xd0037014)&63;s->pack=shamem_read(0xd0008094);
++    s->hw_rows=shamem_read(0xd000420c);s->hw_size=shamem_read(0xd0004210);
++}
++static int capture_tap_select_7d2(void)
++{return ((int(*)(unsigned))0xfe2b196b)(4);}
++static void capture_tap_write_original_7d2(uint32_t original)
++{
++    uint32_t irq=cli();*(volatile uint32_t*)0x2d7d0=original;
++    asm volatile("":::"memory");sei(irq);
++}
++static void capture_tap_sleep_7d2(void){msleep(10);}
++static const struct capture_tap_ops_7d2 capture_tap_ops_7d2={
++    capture_tap_sample_7d2,capture_tap_select_7d2,
++    capture_tap_write_original_7d2,capture_tap_sleep_7d2
++};
++static int capture_tap_runtime_ok_7d2(void)
++{
++    if(!capture_tap_7d2.active)return 1;
++    struct capture_tap_sample_7d2 s;capture_tap_sample_7d2(&s);
++    if(capture_tap_matches_7d2(&s,capture_tap_7d2.expected))return 1;
++    capture_tap_stop_7d2=2;
++    return 0;
++}
++static int capture_tap_signature_7d2(void)
++{
++    static const unsigned char signature[8]={0x24,0x49,0x0e,0x28,0x10,0xb5,0x2f,0xd2};
++    return cam_7d2 && !memcmp((void*)0xfe2b196a,signature,8);
++}
+ static int startup_checkpoint_7d2(const char *stage)
+ {
+     char line[512];
+     int n = snprintf(line, sizeof(line),
+-        "%d %s mode=%d raw=%dx%d pitch=%d bytes=%d out=%dx%d payload=%d slot=%d slots=%d src=%x/%x xy=%d,%d\n",
++        "%d %s mode=%d raw=%dx%d pitch=%d bytes=%d out=%dx%d payload=%d slot=%d slots=%d src=%x/%x xy=%d,%d tap=%d sel=%d mux=%d pack=%x armed=%d active=%d fault=%d limit=%d stop=%d\n",
+         (int)get_ms_clock(), stage, startup_test_7d2, raw_info.width,
+         raw_info.height, raw_info.pitch, raw_info.frame_size,
+         res_x, res_y, frame_size_uncompressed, max_frame_size, valid_slot_count,
+         (unsigned int)(uintptr_t)fullsize_buffers[0],
+-        (unsigned int)(uintptr_t)fullsize_buffers[1], skip_x, skip_y);
++        (unsigned int)(uintptr_t)fullsize_buffers[1], skip_x, skip_y,
++        capture_test_7d2, (int)*(volatile uint32_t*)0x2d7d0,
++        lv ? (int)(shamem_read(0xd0037014)&63) : -1,
++        lv ? (unsigned)shamem_read(0xd0008094) : 0,
++        capture_tap_7d2.armed,capture_tap_7d2.active,capture_tap_7d2.fault,
++        (int)capture_tap_limit_7d2,capture_tap_stop_7d2);
+     if (n <= 0 || (size_t)n >= sizeof(line)) return 0;
+     FILE *log = FIO_CreateFileOrAppend(startup_log_7d2);
+     if (!log) return 0;
+@@ -3650,6 +3710,12 @@
+ static REQUIRES(RawRecTask) EXCLUDES(settings_sem)
+ void raw_video_rec_task(uint32_t card_index)
+ {
++    if (cam_7d2 && capture_tap_7d2.fault)
++    { NotifyBox(6000,"RAW capture restoration failed. Restart camera first."); return; }
++    if (cam_7d2 && capture_test_7d2 &&
++        (startup_test_7d2 != 6 || (capture_test_7d2 != 1 && capture_test_7d2 != 2) ||
++         capture_tap_7d2.fault || !capture_tap_signature_7d2()))
++    { NotifyBox(6000,"RAW capture test rejected. Check mode or restart."); return; }
+     if (cam_7d2 && startup_test_7d2 > 0 && startup_test_7d2 <= 5)
+     {
+         if (card_index == 0) run_startup_test_7d2();
+@@ -3676,6 +3742,8 @@
+     int last_write_timestamp = 0; /* last FIO_WriteFile call */
+     int last_processed_frame = 0;
+     int fps = 1;
++    int tap_attempted = 0;
++    int tap_compress_started = 0;
+ 
+     written_total[card_index] = 0; /* in bytes */
+     writing_time[card_index] = 0;
+@@ -3755,6 +3823,24 @@
+         { recording_checkpoint_7d2("RECORD_BUFFERS_FAILED"); goto cleanup; }
+         if (!recording_checkpoint_7d2("RECORD_AFTER_BUFFERS")) goto cleanup;
+ 
++        if (cam_7d2 && capture_test_7d2)
++        {
++            capture_tap_limit_7d2=0;capture_tap_stop_7d2=0;
++            fps=fps_get_current_x1000();
++            if(fps<23970 || fps>23980 || res_x!=1832 || res_y!=800)
++            { NotifyBox(6000,"Capture test needs 1832x800 at 23.976 fps."); goto cleanup; }
++            if(!recording_checkpoint_7d2("TAP_BEFORE_SELECT"))goto cleanup;
++            tap_attempted=1;
++            int tap_rc=capture_tap_begin_7d2(&capture_tap_7d2,&capture_tap_ops_7d2,capture_test_7d2);
++            if(tap_rc)
++            {
++                char stage[64];snprintf(stage,sizeof(stage),"TAP_START_FAILED_%d",tap_rc);
++                recording_checkpoint_7d2(stage);NotifyBox(6000,"RAW capture test stopped (%d).",tap_rc);goto cleanup;
++            }
++            capture_tap_limit_7d2=(fps*60+500)/1000;
++            if(!recording_checkpoint_7d2("TAP_SETTLED"))goto cleanup;
++        }
++
+         /* create output file */
+         raw_movie_filename = get_next_raw_movie_file_name();
+         if (raw_movie_filename == NULL)
+@@ -3798,12 +3884,14 @@
+         // FIXME SJE let's not use INT_MAX as a signal with meaning,
+         // it's lazy and deceptive.  We should probably use an enum instead.
+         msg_queue_post(compress_mq, INT_MAX);
++        if(tap_attempted)tap_compress_started=1;
+ 
+         /* fake recording status, to integrate with other ml stuff (e.g. hdr video */
+         set_recording_custom(CUSTOM_RECORDING_RAW);
+ 
+         /* this will enable the vsync CBR and the other task(s) */
+         if (!recording_checkpoint_7d2("RECORD_BEFORE_VSYNC_ENABLE")) goto cleanup;
++        if (!capture_tap_runtime_ok_7d2()) goto cleanup;
+         raw_recording_state = pre_record ? RAW_PRE_RECORDING : RAW_RECORDING;
+     }
+     else if (card_index == 1)
+@@ -3827,6 +3915,7 @@
+     /* main recording loop */
+     while (RAW_IS_RECORDING && lv)
+     {
++        if (!capture_tap_runtime_ok_7d2()) break;
+         if (buffer_full)
+         {
+             goto abort_and_check_early_stop;
+@@ -4130,6 +4219,7 @@
+ 
+     /* signal end of recording to the compression task */
+     msg_queue_post(compress_mq, INT_MIN);
++    tap_compress_started=0;
+ 
+     set_recording_custom(CUSTOM_RECORDING_NOT_RECORDING);
+ 
+@@ -4246,6 +4336,22 @@
+     }
+ 
+ cleanup:
++    /* No capture point is changed until RAW_PREPARING. Every early exit after
++     * selection comes here; normal paths arrive after capture/queue draining.
++     * Switch the state before restoration so no further vsync can queue frames. */
++    if (card_index==0 && tap_attempted)
++    {
++        raw_recording_state=RAW_FINISHING;
++        if(tap_compress_started)
++        {
++            msg_queue_post(compress_mq,INT_MIN);
++            set_recording_custom(CUSTOM_RECORDING_NOT_RECORDING);
++        }
++        recording_checkpoint_7d2("TAP_BEFORE_RESTORE");
++        capture_tap_restore_7d2(&capture_tap_7d2,&capture_tap_ops_7d2);
++        recording_checkpoint_7d2("TAP_SELECTOR_RESTORED");
++        capture_tap_limit_7d2=0;
++    }
+     if (cam_7d2 && startup_test_7d2 == 6 && card_index == 0)
+     {
+         char stage[112];
+@@ -4292,6 +4398,12 @@
+         }
+ 
+         ResumeLiveView();
++        if (tap_attempted && capture_tap_7d2.original==14)
++        {
++            int tap_rc=capture_tap_verify_restored_7d2(&capture_tap_7d2,&capture_tap_ops_7d2);
++            recording_checkpoint_7d2(tap_rc ? "TAP_RESTORE_FAILED_RESTART" : "TAP_RESTORE_VERIFIED");
++            if(tap_rc)NotifyBox(12000,"RAW tap restoration unverified. RESTART camera.");
++        }
+         redraw();
+         raw_recording_state = RAW_IDLE;
+         recording_checkpoint_7d2("RECORD_CLEANUP_COMPLETE");
+@@ -4522,6 +4634,14 @@
+                 .choices = CHOICES("OFF", "1832x800"),
+                 .help = "Record 800 rows with the existing 1832-wide 14-bit transfer.",
+                 .help2 = "Requires 1832 manual RAW. OFF restores aspect-ratio height.",
++            },
++            {
++                .name = "7D2 capture test",
++                .priv = &capture_test_7d2,
++                .max = 2,
++                .choices = CHOICES("OFF", "Baseline 60s", "Corrected 60s"),
++                .help = "Compare original RAW with later Canon defect-corrected RAW.",
++                .help2 = "1832x800, 14-bit, 23.976 fps only. Stops after about 60 seconds.",
+             },
+             MENU_EOL,
+         },
+@@ -4893,6 +5013,8 @@
+             e->shidden = 1;
+         if (streq(e->name, "7D2 800-row trial") && !cam_7d2)
+             e->shidden = 1;
++        if (streq(e->name, "7D2 capture test") && !cam_7d2)
++            e->shidden = 1;
+         if (!is_card_spanning_possible && streq(e->name, "Card Spanning"))
+         {
+             e->shidden = 1;
+@@ -4954,6 +5076,7 @@
+ 
+ static unsigned int raw_rec_deinit()
+ {
++    if (!RAW_IS_IDLE || capture_tap_7d2.armed || capture_tap_7d2.active) return 1;
+     return 0;
+ }
+ 
+@@ -4990,4 +5113,5 @@
+     MODULE_CONFIG(h264_proxy_menu)
+     MODULE_CONFIG(startup_test_7d2)
+     MODULE_CONFIG(height800_7d2)
++    MODULE_CONFIG(capture_test_7d2)
+ MODULE_CONFIGS_END()
+--- a/modules/raw_video/mlv_lite/capture_tap_7d2.h
++++ b/modules/raw_video/mlv_lite/capture_tap_7d2.h
+@@ -0,0 +1,75 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later
++ * Bounded task-context lifecycle for the 7D2.112 RAW capture-point video test.
++ * Hardware access is supplied by the caller; host tests mock only that boundary.
++ */
++#ifndef CAPTURE_TAP_7D2_H
++#define CAPTURE_TAP_7D2_H
++#include <stdint.h>
++struct capture_tap_sample_7d2 {
++    uint32_t selector, mux, pack, hw_rows, hw_size;
++    uint32_t width, height, pitch, bytes, bits, cfa, ticks;
++    int live, movie, zoom, resolution, crop, raw, h264, job;
++};
++struct capture_tap_ops_7d2 {
++    void (*sample)(struct capture_tap_sample_7d2 *);
++    int (*select_corrected)(void);
++    void (*restore)(uint32_t);
++    void (*sleep10)(void);
++};
++struct capture_tap_state_7d2 {
++    uint32_t original, expected;
++    int armed, active, fault;
++};
++static int capture_tap_geometry_7d2(const struct capture_tap_sample_7d2 *s)
++{
++    unsigned rows=(s->hw_rows&65535)+1, rows2=(s->hw_size>>16)+1;
++    if(rows2>rows)rows=rows2;
++    return s->live && s->movie && s->zoom==1 && !s->resolution && !s->crop &&
++        s->raw && !s->h264 && !s->job && s->pack==0x20 &&
++        s->width==1984 && s->height==1068 && s->pitch==3472 &&
++        s->bytes==3708096 && s->bits==14 && s->cfa==0x02010100 &&
++        (s->hw_size&65535)==3472 && rows==1068;
++}
++static int capture_tap_matches_7d2(const struct capture_tap_sample_7d2 *s,unsigned expected)
++{return capture_tap_geometry_7d2(s) && s->selector==expected && s->mux==expected;}
++static int capture_tap_wait_7d2(const struct capture_tap_ops_7d2 *ops,unsigned expected,unsigned frames)
++{
++    struct capture_tap_sample_7d2 s;ops->sample(&s);unsigned start=s.ticks;
++    for(unsigned i=0;i<100;i++){
++        ops->sample(&s);
++        if(!capture_tap_geometry_7d2(&s))return -31;
++        if(s.selector!=expected)return -32;
++        if(s.mux==expected && (unsigned)(s.ticks-start)>=frames)return 0;
++        ops->sleep10();
++    }
++    return -33;
++}
++static int capture_tap_begin_7d2(struct capture_tap_state_7d2 *state,const struct capture_tap_ops_7d2 *ops,int mode)
++{
++    struct capture_tap_sample_7d2 s;
++    if(state->armed || state->active || state->fault)return -34;
++    if(mode!=1 && mode!=2)return -35;
++    ops->sample(&s);
++    /* Never take ownership of an unexpected selector or someone else's tap. */
++    if(!capture_tap_matches_7d2(&s,14))return -36;
++    state->original=14;state->expected=mode==2?18:14;
++    if(mode==2){
++        state->armed=1; /* cleanup owns restoration even on setter failure */
++        if(ops->select_corrected())return -37;
++    }
++    int rc=capture_tap_wait_7d2(ops,state->expected,3);
++    if(!rc)state->active=1;
++    return rc;
++}
++static void capture_tap_restore_7d2(struct capture_tap_state_7d2 *state,const struct capture_tap_ops_7d2 *ops)
++{
++    state->active=0;
++    if(state->armed){ops->restore(state->original);state->armed=0;}
++}
++static int capture_tap_verify_restored_7d2(struct capture_tap_state_7d2 *state,const struct capture_tap_ops_7d2 *ops)
++{
++    int rc=capture_tap_wait_7d2(ops,state->original,2);
++    if(rc)state->fault=1; /* refuse another trial until reboot */
++    return rc;
++}
++#endif

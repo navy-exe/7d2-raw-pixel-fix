@@ -1,0 +1,25 @@
+# User camera data and native binaries are not published.
+*.MLV
+*.mlv
+*.M[0-9][0-9]
+*.RAW
+*.raw
+*.CR2
+*.cr2
+*.DNG
+*.dng
+*.MOV
+*.mov
+*.mp4
+*.mo
+*.o
+*.elf
+*.exe
+**/build/
+__pycache__/
+.env
+.env.*
+camera-backups/
+captures/
+private/
+ROM*.BIN

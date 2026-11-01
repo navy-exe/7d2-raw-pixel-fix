@@ -1,0 +1,65 @@
+{
+  "between_stages": {
+    "correlation": 0.9983970498106606,
+    "median_delta_adu": 0.0,
+    "median_absolute_delta_adu": 4.0,
+    "p99_absolute_delta_adu": 32.0
+  },
+  "within_before": {
+    "correlation": 0.9972834311289098,
+    "median_delta_adu": 0.0,
+    "median_absolute_delta_adu": 5.0,
+    "p99_absolute_delta_adu": 43.0
+  },
+  "within_after": {
+    "correlation": 0.9993133882525695,
+    "median_delta_adu": 0.0,
+    "median_absolute_delta_adu": 6.0,
+    "p99_absolute_delta_adu": 26.0
+  },
+  "cfa_plane_means": {
+    "before": [
+      79.31641387939453,
+      127.79116821289062,
+      127.32859802246094,
+      78.64862060546875
+    ],
+    "after": [
+      79.36820983886719,
+      128.0491180419922,
+      127.6511001586914,
+      78.25975036621094
+    ]
+  },
+  "low_two_bit_histograms": {
+    "before": [
+      620861,
+      487299,
+      482093,
+      480138
+    ],
+    "after": [
+      516144,
+      527644,
+      514424,
+      512179
+    ]
+  },
+  "corrected_sites": {
+    "exact_same_zero_map_as_dark_test": true,
+    "count": 689,
+    "sites_above_black_plus_256_after": 58,
+    "median_absolute_difference_from_after_same_color_neighbors": 3.0
+  },
+  "display": {
+    "frames": [
+      "TP0002B0.RAW",
+      "TP0002A0.RAW"
+    ],
+    "gain": 8.62461908412089,
+    "color": "same metadata matrix, approximate daylight",
+    "pc_pixel_repair": false,
+    "averaging": false
+  },
+  "limitations": "Temporal scene/light variation can affect differences; no calibrated color target or continuous video test. 14-bit packing is not proof of true source precision."
+}
