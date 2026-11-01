@@ -113,7 +113,7 @@ Based on [Magic Lantern simplified](https://github.com/reticulatedpines/magiclan
 upstream commit `142472e95054d73640f50789ac0fd66325499d82`. Magic Lantern and
 MLV Lite authors retain their existing copyright and credits.
 
-Special thanks to **`names_r_hard`** and **`Petars23_`** for their help and
+Special thanks to **`names_are_hard`** and **`Petars23_`** for their help and
 feedback during this investigation.
 
 This investigation was prompted by community observations that RAW video might
