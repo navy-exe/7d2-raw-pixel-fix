@@ -330,8 +330,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6847,
-      "sha256": "09eef7f5821985f22e8e6fc3122db726ed61619e92e5baee342e36cf9aea3c37"
+      "bytes": 6960,
+      "sha256": "f687d8dba8be08aa8a563c0918a1e47d7f671af75c17887147d851a50f0f72f2"
     },
     {
       "path": "source/magiclantern_simplified/.gitignore",
