@@ -15,7 +15,7 @@
       "current_source_matches": true
     }
   ],
-  "user_media_included": false,
+  "user_media_included": true,
   "project_camera_rom_included": false,
   "files": [
     {
@@ -50,8 +50,8 @@
     },
     {
       "path": "docs/PRIVACY.md",
-      "bytes": 706,
-      "sha256": "d2e6b8be251941e133891c8d1708a68371837cd55ca67992b60fafe2f0fe8a9d"
+      "bytes": 973,
+      "sha256": "b77d03385134abe58473b4872c55738f650c685831974767898e8ec84cb54363"
     },
     {
       "path": "docs/TECHNICAL-HANDOVER.md",
@@ -330,8 +330,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6960,
-      "sha256": "f687d8dba8be08aa8a563c0918a1e47d7f671af75c17887147d851a50f0f72f2"
+      "bytes": 8274,
+      "sha256": "fbcea5b00612414a52c432db3b0933cc101b26e30cec8bc4cce34d9a0ff462ff"
     },
     {
       "path": "source/magiclantern_simplified/.gitignore",
@@ -11677,6 +11677,17 @@
       "path": "tools/test_capture_tap_video.c",
       "bytes": 4102,
       "sha256": "61d9f0cc0c6bc0882d8414fb52aebc56d2496da1c19c6c2259d3ad611df01e2f"
+    },
+    {
+      "path": "docs/images/full-frames-mlvapp-comparison.png",
+      "bytes": 1533939,
+      "sha256": "fe026bd743c7a7a7a5946cf726425725b98809d4172d68fd4995bcd64a07dc72"
+    },
+    {
+      "path": "docs/images/detail-mlvapp-comparison.png",
+      "bytes": 346632,
+      "sha256": "b76010a1e4b77212188c238601f92152ffab353ad3767c2b313b0793a1b3af38"
     }
-  ]
+  ],
+  "user_media_scope": "Two owner-approved rendered before/after comparison PNGs in docs/images; original RAW files and footage excluded."
 }

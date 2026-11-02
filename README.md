@@ -40,6 +40,28 @@ The result is consistent with Canon-side defective-pixel correction. Canon's
 exact correction algorithm and all other processing at DEFOE have not been
 fully characterized.
 
+## Before and after
+
+The matched lit-scene snapshots below show the original **RSHD** capture point
+on the left and the later **DEFOE** capture point on the right. Both were rendered
+through **MLV App v1.16 using AMaZE**, with the same processing settings and
+software bad-pixel repair, focus-dot repair and chroma smoothing **off**.
+The improvement comes from the camera-side capture-point change.
+
+![Complete before and after frames rendered in MLV App](docs/images/full-frames-mlvapp-comparison.png)
+
+The same region enlarged **3× using nearest-neighbor scaling** makes the colored
+specks easier to see. No dots were added, retouched or individually enhanced.
+
+![Matching region before and after, enlarged three times](docs/images/detail-mlvapp-comparison.png)
+
+These are matched sequential test snapshots, not the same instant or a matched
+ISO 5000 comparison. The viewing containers preserved the original 1984 × 1068,
+14-bit RAW pixel payloads; only the rendered comparison PNGs are published.
+The full-frame overview is reduced equally on both sides to fit the page.
+Ordinary sensor noise remains; this comparison demonstrates the identified
+fixed defective-sample pattern rather than general denoising.
+
 ## Camera-tested results
 
 Tested recording format: **1832 × 800, uncompressed 14-bit packing, 23.976 fps,
@@ -69,9 +91,10 @@ recorded checks. No malformed blocks or frame-timing gaps were detected. The
 worst measured whole-frame copy was about **24.8 ms**, within the approximately
 41.7 ms frame interval. These measurements do not establish end-to-end latency.
 
-The public evidence contains logs, measurements and hashes, **not personal
-photos, footage, RAW pixel payloads or project camera ROM dumps**. See
-[validation notes](docs/VALIDATION.md) for methodology and limits.
+The public evidence contains logs, measurements, hashes and the two approved
+rendered comparisons above. Original footage, RAW pixel payloads and project
+camera ROM dumps are excluded. See [validation notes](docs/VALIDATION.md) for
+methodology and limits, and [published-data notes](docs/PRIVACY.md) for scope.
 
 ## Current implementation and limits
 
